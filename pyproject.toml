@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ez_config"
+name = "ez_config_mgt"
 description='Easy config management'
 authors = ["Christophe Druet <christophe.druet@entsoe.eu>"]
 version = "0.1.0"
@@ -11,15 +11,15 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Development Status :: 2 - Pre-Alpha",
 ]
-keywords = ["config"]
-packages = [{include = "ez_config"}]
+keywords = ["config", "management"]
+packages = [{include = "ez_config_mgt"}]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
 loguru = "^0.7.2"
 yarl = "^1.9.4"
-python-benedict = {extras = ["all"], version = "^0.33.2"}
 pytoml = "^0.1.21"
+python-benedict = {extras = ["toml"], version = "^0.33.2"}
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.3"
@@ -38,7 +38,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.setuptools.packages.find]
 where = ["."]  # list of folders that contain the packages (["."] by default)
-include = ["ez_config*"]  # package names should match these glob patterns (["*"] by default)
+include = ["ez_config_mgt*"]  # package names should match these glob patterns (["*"] by default)
 exclude = ["test*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 
@@ -55,7 +55,7 @@ push            = false
         'current_version = "{version}"',
         'version = "{version}"',
     ]
-    "ez_config/*.py" = ["{version}"]
+    "ez_config_mgt/*.py" = ["{version}"]
     "tests/*.py" = ["{version}"]
 
 [tool.isort]
@@ -68,7 +68,7 @@ import_heading_firstparty = "mongument imports"
 strict = true
 
     [[tool.mypy.overrides]]
-    module                 = "ez_config"
+    module                 = "ez_config_mgt"
     ignore_missing_imports = true
 
 [[tool.poetry.source]]

@@ -7,7 +7,7 @@ Simple class to manage configurations.
 Classic through pip or your favourite package manager:
 
 ```shell
-pip install ez-config
+pip install ez-config-mgt
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ The class simply get the config value for the user's specific config and get the
 First thing is to instantiate a configuration. 
 
 ```python
-from ez_config import BaseConfig
+from ez_config_mgt import BaseConfig
 
 config = BaseConfig('test')
 
@@ -30,7 +30,7 @@ print(config)
 You can tailor the default configuration to your needs.
 
 ```python
-from ez_config import BaseConfig, extend_default_config
+from ez_config_mgt import BaseConfig, extend_default_config
 
 extend_default_config({'mydefaults': { 'example': 'test' }})
 
@@ -42,7 +42,7 @@ print(config)
 Class is meant to be inherited. It's quite useful if you just need one config and prefer not to bother passing arguments in your main code.
 
 ```python
-from ez_config import BaseConfig
+from ez_config_mgt import BaseConfig
 
 class MyToolConfig(BaseConfig):
     def __init__(self):
@@ -58,7 +58,7 @@ print(config)
 Alternatively, you can first extend the default config. It's rather convenient if your package is made of multiple parts, each of them having its own configuration needs that you want to deal with in one single config.
 
 ```python
-from ez_config import BaseConfig, extend_default_config
+from ez_config_mgt import BaseConfig, extend_default_config
 
 extend_default_config({'mydefaults': { 'example': 'test' }})
 

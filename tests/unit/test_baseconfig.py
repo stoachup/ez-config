@@ -10,7 +10,7 @@ class TestBaseConfig:
 
     # Initialize BaseConfig with default parameters
     def test_initialize_with_default_parameters(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         assert config.name == 'configuration'
         assert config.defaults == DEFAULT_CONFIG
@@ -19,14 +19,14 @@ class TestBaseConfig:
 
     # Initialize BaseConfig with invalid default_conf type
     def test_initialize_with_invalid_default_conf_type(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
         import pytest
         with pytest.raises(AttributeError, match='Default config must be dict or benedict.'):
             BaseConfig(default_conf='invalid_type')
 
     # Load configuration from default sections
     def test_load_configuration_from_default_sections(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         assert config.name == 'configuration'
         assert config.defaults == DEFAULT_CONFIG
@@ -35,7 +35,7 @@ class TestBaseConfig:
 
     # Update configuration with new sections
     def test_update_configuration_with_new_sections(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         new_sections = ['section1', 'section2']
         initial_length = len(config.store)
@@ -44,14 +44,14 @@ class TestBaseConfig:
 
     # Retrieve configuration values using get method
     def test_retrieve_configuration_values(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         config.set('test_key', 'test_value')
         assert config.get('test_key') == 'test_value'
 
     # Set configuration values using set method
     def test_set_configuration_values(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
 
         config = BaseConfig()
         config.set('key1', 'value1')
@@ -62,13 +62,13 @@ class TestBaseConfig:
 
     # Save configuration in 'asis' mode
     def test_save_configuration_in_asis_mode(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         # Add test logic here
 
     # Reset configuration to default settings
     def test_reset_configuration_to_default_settings(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         config.set('test_key', 'test_value')
         config.reset()
@@ -76,7 +76,7 @@ class TestBaseConfig:
 
     # Save configuration in 'full' mode
     def test_save_configuration_in_full_mode(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         import os
         from benedict import benedict
         from loguru import logger
@@ -95,7 +95,7 @@ class TestBaseConfig:
 
     # Save configuration in 'delta' mode
     def test_save_configuration_in_delta_mode(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         import os
         from benedict import benedict
         from loguru import logger
@@ -113,14 +113,14 @@ class TestBaseConfig:
 
     # Use dynamic find methods to retrieve configuration values
     def test_retrieve_configuration_values(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
-        assert config.find('config.file') == 'dft'
+        assert config.find('config.file') == 'config'
         assert config.find('config.directory') == './conf'
 
     # Load configuration with non-existent sections
     def test_load_non_existent_sections(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
         config = BaseConfig(name='test', default_conf={}, config_dir='./non_existent_dir')
         assert config.name == 'test'
         assert config.defaults == {}
@@ -129,7 +129,7 @@ class TestBaseConfig:
 
     # Update configuration with non-existent sections
     def test_update_with_non_existent_sections(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
 
         config = BaseConfig(name='test', default_conf={'key': 'value'}, config_dir='./test_conf')
         config.update(['non_existent'])
@@ -138,40 +138,40 @@ class TestBaseConfig:
 
     # Retrieve non-existent configuration key
     def test_retrieve_non_existent_key(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
         config = BaseConfig()
         non_existent_key = 'non_existent_key'
         assert config.get(non_existent_key) is None
 
     # Save configuration with empty data
     def test_save_configuration_with_empty_data(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         assert config.save() == 0
 
     # Set configuration with invalid arguments
     def test_set_config_with_invalid_arguments(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         with pytest.raises(AttributeError):
             config = BaseConfig(name='test', default_conf='invalid', config_dir='./custom_dir')
 
     # Reset configuration when no sections exist
     def test_reset_configuration_no_sections_exist(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         config = BaseConfig()
         config.reset()
         assert len(config.store) == 0
 
     # Delete non-existent configuration item
     def test_delete_non_existent_configuration_item(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
         config = BaseConfig()
         with pytest.raises(KeyError):
             del config['non_existent_key']
 
     # Handle user input during reset operation
     def test_handle_user_input_during_reset_operation(self):
-        from ez_config.core import BaseConfig, DEFAULT_CONFIG
+        from ez_config_mgt.core import BaseConfig, DEFAULT_CONFIG
         import builtins
         from unittest.mock import patch
 
@@ -182,7 +182,7 @@ class TestBaseConfig:
 
     # Ensure configuration directory is created if it does not exist
     def test_create_config_directory_if_not_exist(self):
-        from ez_config.core import BaseConfig
+        from ez_config_mgt.core import BaseConfig
         import os
 
         # Setup

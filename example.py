@@ -1,4 +1,4 @@
-from ez_config import *
+from ez_config_mgt import *
 
 config = BaseConfig('example')
 
