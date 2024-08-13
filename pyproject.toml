@@ -2,7 +2,7 @@
 name = "ez_config"
 description='Easy config management'
 authors = ["Christophe Druet <christophe.druet@entsoe.eu>"]
-version = "0.0.0"
+version = "0.1.0"
 license = "MIT"
 readme = "README.md"
 classifiers = [
@@ -43,7 +43,7 @@ exclude = ["test*"]  # exclude packages matching these glob patterns (empty by d
 namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 
 [tool.bumpver]
-current_version = "0.0.0"
+current_version = "0.1.0"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message  = "bump version {old_version} -> {new_version}"
 commit          = true
