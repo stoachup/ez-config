@@ -186,3 +186,6 @@ test_jh*
 
 *.whl
 
+# Testing
+/non_existent_dir
+/test_conf

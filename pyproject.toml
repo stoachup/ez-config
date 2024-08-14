@@ -1,7 +1,8 @@
 [tool.poetry]
 name = "ez_config_mgt"
 description='Easy config management'
-authors = ["Christophe Druet <christophe.druet@entsoe.eu>"]
+authors = [ "Christophe Druet <christophe@stoachup.com>"]
+maintainers = [ "Christophe Druet <christophe@stoachup.com>"]
 version = "0.1.1"
 license = "MIT"
 readme = "README.md"
@@ -13,6 +14,7 @@ classifiers = [
 ]
 keywords = ["config", "management"]
 packages = [{include = "ez_config_mgt"}]
+repository = "https://github.com/stoachup/ez-config-mgt"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.13"
